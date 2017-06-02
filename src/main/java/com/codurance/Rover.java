@@ -1,42 +1,21 @@
 package com.codurance;
 
+import static com.codurance.Direction.NORTH;
+
 public class Rover {
 
-    private String direction = "N";
+    private Direction direction = NORTH;
 
     public String execute(String commands) {
         for (char c : commands.toCharArray()) {
             if (c == 'R') {
-                turnRight();
+                direction = direction.right();
             }
             if (c == 'L') {
-                turnLeft();
+                direction = direction.left();
             }
         }
-        return "0-0-" + direction;
+        return "0-0-" + direction.stringValue();
     }
 
-    private void turnLeft() {
-        if (direction == "N") {
-            direction = "W";
-        } else if (direction == "W") {
-            direction = "S";
-        } else if (direction == "S") {
-            direction = "E";
-        } else {
-            direction = "N";
-        }
-    }
-
-    private void turnRight() {
-        if (direction == "N") {
-            direction = "E";
-        } else if (direction == "E") {
-            direction = "S";
-        } else if (direction == "S") {
-            direction = "W";
-        } else {
-            direction = "N";
-        }
-    }
 }
