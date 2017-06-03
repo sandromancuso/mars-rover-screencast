@@ -13,10 +13,12 @@ import static org.junit.Assert.assertThat;
 public class RoverShould {
 
     private Rover rover;
+    private Grid grid;
 
     @Before
     public void initialise() {
-        rover = new Rover();
+        grid = new Grid(10, 10);
+        rover = new Rover(grid);
     }
 
     @Test
