@@ -1,7 +1,7 @@
 package com.codurance;
 
-import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
-import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
+import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
+import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 
 class Coordinate {
     private final int x;
@@ -21,8 +21,8 @@ class Coordinate {
     }
 
     @Override
-    public boolean equals(Object o) {
-        return reflectionEquals(this, o);
+    public boolean equals(Object other) {
+        return reflectionEquals(this, other);
     }
 
     @Override
