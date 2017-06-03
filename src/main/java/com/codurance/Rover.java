@@ -2,13 +2,12 @@ package com.codurance;
 
 import static com.codurance.Direction.*;
 
-public class Rover {
+class Rover {
 
     private Direction direction = NORTH;
-    private int y = 0;
-    private int x = 0;
+    private Coordinate coordinate = new Coordinate(0, 0);
 
-    public String execute(String commands) {
+    String execute(String commands) {
         for (char c : commands.toCharArray()) {
             if (c == 'R') {
                 direction = direction.right();
@@ -17,23 +16,10 @@ public class Rover {
                 direction = direction.left();
             }
             if (c == 'M') {
-                move();
+                coordinate = coordinate.move(direction, this);
             }
         }
-        return x + "-" + y + "-" + direction.stringValue();
-    }
-
-    private int move() {
-        if (direction == NORTH) {
-            y += 1;
-        } else if (direction == SOUTH){
-            y -= 1;
-        } else if (direction == EAST) {
-            x += 1;
-        } else if (direction == WEST) {
-            x -= 1;
-        }
-        return y;
+        return coordinate.x() + "-" + coordinate.y() + "-" + direction.stringValue();
     }
 
 }

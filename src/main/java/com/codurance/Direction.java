@@ -30,7 +30,7 @@ public enum Direction {
 
     private Direction directionMatching(String value) {
         for (Direction direction : values()) {
-            if (direction.current == value) {
+            if (direction.current.equals(value)) {
                 return direction;
             }
         }

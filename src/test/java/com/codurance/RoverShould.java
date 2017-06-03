@@ -83,5 +83,44 @@ public class RoverShould {
         assertThat(rover.execute(command), is(position));
     }
 
+    @Test
+    @Parameters({
+            "MMMMMMMMMM, 0-0-N",
+            "MMMMMMMMMMMMMMM, 0-5-N"
+    })
+    public void
+    wrap_from_top_to_bottom(String command, String position) {
+        assertThat(rover.execute(command), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "RRM, 0-9-S",
+            "RRMMMMM, 0-5-S"
+    })
+    public void
+    wrap_from_bottom_to_top(String command, String position) {
+        assertThat(rover.execute(command), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "RMMMMMMMMMM, 0-0-E",
+            "RMMMMMMMMMMMMMMM, 5-0-E"
+    })
+    public void
+    wrap_from_right_to_left(String command, String position) {
+        assertThat(rover.execute(command), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "LM, 9-0-W",
+            "LMMMMM, 5-0-W"
+    })
+    public void
+    wrap_from_left_to_right(String command, String position) {
+        assertThat(rover.execute(command), is(position));
+    }
 
 }
