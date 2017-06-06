@@ -15,6 +15,7 @@
 		<assertj.version>3.6.2</assertj.version>
 		<mockito.version>1.10.19</mockito.version>
 		<commons-lang.version>3.5</commons-lang.version>
+		<cucumber.version>1.2.2</cucumber.version>
 	</properties>
 
 	<dependencies>
