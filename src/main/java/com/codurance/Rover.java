@@ -2,24 +2,18 @@ package com.codurance;
 
 class Rover {
 
-    String direction = "N";
+    Direction direction = Direction.NORTH;
 
     String execute(String commands) {
         for (char c : commands.toCharArray()) {
-            direction = rotateRight();
+            if (c == 'R') {
+                direction = direction.right();
+            }
+            if (c == 'L') {
+                direction = direction.left();
+            }
         }
-        return "0:0:" + direction;
+        return "0:0:" + direction.value();
     }
 
-    private String rotateRight() {
-        if (direction == "N") {
-            return "E";
-        } else if (direction == "E") {
-            return "S";
-        } if (direction == "S") {
-            return "W";
-        } else {
-            return "N";
-        }
-    }
 }
