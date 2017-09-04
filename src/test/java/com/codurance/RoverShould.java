@@ -42,4 +42,24 @@ public class RoverShould {
     rotate_left(String commands, String position) {
         assertThat(rover.execute(commands), is(position));
     }
+
+    @Test
+    @Parameters({
+        "M, 0:1:N",
+        "MMM, 0:3:N"
+    })
+    public void
+    move_up(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
+
+    @Test
+    @Parameters({
+        "MMMMMMMMMM, 0:0:N",
+        "MMMMMMMMMMMMMMM, 0:5:N",
+    })
+    public void
+    wrap_from_top_to_bottom_when_moving_north(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
 }
