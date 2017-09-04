@@ -1,10 +1,13 @@
 package com.codurance;
 
+import static com.codurance.Direction.EAST;
 import static com.codurance.Direction.NORTH;
 
 class Rover {
 
-    public static final int MAX_HEIGHT = 10;
+    private static final int MAX_HEIGHT = 10;
+    private static final int MAX_WIDTH = 10;
+
     Direction direction = NORTH;
     Coordinate coordinate = new Coordinate(0, 0);
 
@@ -24,13 +27,17 @@ class Rover {
     }
 
     private Coordinate move() {
+        int x = coordinate.x();
         int y = coordinate.y();
 
         if (direction == NORTH) {
             y = (y + 1) % MAX_HEIGHT;
         }
+        if (direction == EAST) {
+            x = (x + 1) % MAX_WIDTH;
+        }
 
-        return new Coordinate(coordinate.x(), y);
+        return new Coordinate(x, y);
     }
 
 }

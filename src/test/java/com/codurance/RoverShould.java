@@ -62,4 +62,25 @@ public class RoverShould {
     wrap_from_top_to_bottom_when_moving_north(String commands, String position) {
         assertThat(rover.execute(commands), is(position));
     }
+
+    @Test
+    @Parameters({
+        "RM, 1:0:E",
+        "RMMMMM, 5:0:E",
+    })
+    public void
+    move_right(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
+
+    @Test
+    @Parameters({
+        "RMMMMMMMMMM, 0:0:E",
+        "RMMMMMMMMMMMMMMM, 5:0:E",
+    })
+    public void
+    wrap_from_right_to_left_when_moving_east(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
+
 }
