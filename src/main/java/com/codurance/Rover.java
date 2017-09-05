@@ -1,5 +1,7 @@
 package com.codurance;
 
+import java.util.Optional;
+
 import static com.codurance.Direction.*;
 
 class Rover {
@@ -14,6 +16,7 @@ class Rover {
     }
 
     String execute(String commands) {
+        String obstacleString = "";
         for (char c : commands.toCharArray()) {
             if (c == 'R') {
                 direction = direction.right();
@@ -22,10 +25,16 @@ class Rover {
                 direction = direction.left();
             }
             if (c == 'M') {
-                coordinate = grid.nextCoordinateFor(coordinate, direction);
+                obstacleString = move();
             }
         }
-        return coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
+        return obstacleString + coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
+    }
+
+    private String move() {
+        Optional<Coordinate> nextCoordinate = grid.nextCoordinateFor(this.coordinate, direction);
+        nextCoordinate.ifPresent(nc -> this.coordinate = nc);
+        return nextCoordinate.isPresent() ? "" : "O:";
     }
 
 }

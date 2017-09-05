@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -101,6 +102,21 @@ public class RoverShould {
     })
     public void
     move_south(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "MMMM, O:0:3:N",
+            "RMMMMMM, O:1:0:E"
+    })
+    public void
+    stop_at_obstacle(String commands, String position) {
+        Coordinate obstacle_0x4 = new Coordinate(0, 4);
+        Coordinate obstacle_2x0 = new Coordinate(2, 0);
+        Grid grid = new Grid(asList(obstacle_0x4, obstacle_2x0));
+        Rover rover = new Rover(grid);
+        
         assertThat(rover.execute(commands), is(position));
     }
 
