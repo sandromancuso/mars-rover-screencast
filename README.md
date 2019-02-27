@@ -5,7 +5,7 @@ Develop an API that moves a rover around on a grid.
 
 Rules:
 
-1. You are given the initial starting point (0,0,N) of a rover.
+1. You are given the initial starting point (0:0:N) of a rover.
 2. 0,0 are X,Y co-ordinates on a grid of (10,10).
 3. N is the direction it is facing (i.e. N,S,E,W).
 4. L and R allow the rover to rotate left and right.
